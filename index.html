@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>論理回路パズル「AND・OR・NOTの迷宮」</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- 電流エフェクト用 -->
+        <div id="lightning-flash" class="lightning-flash hidden"></div>
+
+        <!-- TITLE SCREEN -->
+        <div id="screen-title" class="screen active">
+            <div class="pixel-border">
+                <img id="title-img" src="./logic_dungeon.png" alt="迷宮の扉とボクバナナ">
+            </div>
+            <h1 class="dungeon-title">LOGIC DUNGEON</h1>
+            <h2>AND・OR・NOTの迷宮</h2>
+            <p class="subtitle">論理回路の謎を解き、最深部の扉を開け！</p>
+            <button class="dungeon-btn start-btn" onclick="startGame()">⚔️ 迷宮に入る</button>
+        </div>
+
+        <!-- GAME SCREEN -->
+        <div id="screen-game" class="screen">
+            <div class="game-header">
+                <div class="hp-bar" id="hp-bar">❤️❤️❤️</div>
+                <div class="header-right">
+                    <span class="stage-info" id="stage-title"></span>
+                    <span class="timer-box" id="timer">--</span>
+                </div>
+            </div>
+            <div id="instruction-box" class="instruction-box"></div>
+            
+            <div id="panel-main" class="stage-panel active">
+                <div class="panel-header">
+                    <div id="counter" class="counter-text"></div>
+                    <!-- 魔法の透視ボタン -->
+                    <button id="hint-btn" class="dungeon-btn hint-btn" onclick="useHint()">💡 透視魔法 (Time -5s)</button>
+                </div>
+
+                <div class="gate-card" id="gate-card">
+                    <!-- 回路図アイコン表示用 -->
+                    <div id="gate-icon-box" class="gate-icon-box"></div>
+                    <div id="question-text"></div>
+                </div>
+                <div id="options" class="quiz-options"></div>
+            </div>
+
+            <div id="feedback-overlay" class="feedback-overlay hidden">
+                <div id="feedback-title" class="feedback-title"></div>
+                <p id="feedback-text" class="feedback-text"></p>
+                <button class="dungeon-btn" id="next-btn" onclick="closeFeedback()">次へ進む ▶</button>
+            </div>
+        </div>
+
+        <!-- GAMEOVER SCREEN -->
+        <div id="screen-gameover" class="screen">
+            <h1 class="gameover-title">GAME OVER</h1>
+            <p class="gameover-subtitle" id="gameover-reason">迷宮の罠に倒れた…</p>
+            <img src="./logic_dungeon.png" alt="Game Over" style="width:100px; filter: grayscale(100%); margin-bottom: 20px;">
+            <button class="dungeon-btn" onclick="startGame()">↻ リトライ</button>
+        </div>
+
+        <!-- CLEAR SCREEN -->
+        <div id="screen-clear" class="screen">
+            <img id="clear-img" src="./logic_victory.png" alt="迷宮踏破">
+            <h1 class="clear-title">QUEST CLEARED!</h1>
+            <!-- 冒険者称号 -->
+            <h2 id="rank-display" class="rank-display"></h2>
+            <p class="clear-subtitle">すべての論理ゲートを突破した！</p>
+            <div id="score-display" class="score-display"></div>
+            
+            <div class="password-box">
+                <p>🗝️ Google Classroomに「あいことば」を入力して宝箱を開けよう</p>
+                <p class="password-text" id="password-text"></p>
+            </div>
+
+            <div class="review-section">
+                <h3 class="review-title">📜 冒険の記録（間違えた問題）</h3>
+                <div id="review-area"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
