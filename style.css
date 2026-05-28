@@ -171,3 +171,5 @@ body.boss-mode .timer-box { color: #ff0000; animation: tremble 0.1s infinite; te
     .quiz-opt { padding: 10px; font-size: 1rem; }
     #title-img { width: 100px; height: 100px; }
 }
+
+.keyword-text, .password-text { user-select: text !important; -webkit-user-select: text !important; }
